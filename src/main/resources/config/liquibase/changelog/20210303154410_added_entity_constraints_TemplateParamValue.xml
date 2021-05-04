@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity TemplateParamValue.
+    -->
+    <changeSet id="20210303154410-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="param_id"
+                                 baseTableName="template_param_value"
+                                 constraintName="fk_template_param_value_param_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="template_param"/>
+
+        <addForeignKeyConstraint baseColumnNames="sms_notification_id"
+                                 baseTableName="template_param_value"
+                                 constraintName="fk_template_param_value_sms_notification_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sms_notification"/>
+
+        <addForeignKeyConstraint baseColumnNames="email_notification_id"
+                                 baseTableName="template_param_value"
+                                 constraintName="fk_template_param_value_email_notification_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="email_notification"/>
+
+    </changeSet>
+</databaseChangeLog>

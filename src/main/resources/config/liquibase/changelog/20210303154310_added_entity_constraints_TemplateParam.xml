@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity TemplateParam.
+    -->
+    <changeSet id="20210303154310-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="channel_id"
+                                 baseTableName="template_param"
+                                 constraintName="fk_template_param_channel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="channel"/>
+
+    </changeSet>
+</databaseChangeLog>

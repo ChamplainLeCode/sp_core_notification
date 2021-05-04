@@ -1,0 +1,78 @@
+application {
+  config {
+    baseName corenotification,
+    applicationType microservice,
+    packageName com.sprintpay.core.notification,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    devDatabaseType mysql,
+  }
+  entities *
+}
+
+
+enum Operator { MTN, ORANGE, NEXTTEL, CAMTEL}
+
+enum ChannelType { SMS, EMAIL }
+
+entity TemplateParam{
+	name String required
+    value String required
+    description String
+}
+
+entity TemplateParamValue {
+	name String required
+    value String required
+}
+
+entity Channel{
+	type ChannelType required
+    template String required
+}
+
+entity EmailParticipant{
+	mail String required
+}
+
+entity MicroServiceParticipant{
+	name String required
+    userId String
+    userName String
+    userRole String
+}
+
+entity SmsParticipant{
+	phone String required
+    operator Operator
+}
+
+entity SmsNotification{
+	message String
+}
+
+entity EmailNotification{
+	message String
+    sujet String
+}
+
+
+relationship OneToMany {
+  Channel { params } to TemplateParam 
+  SmsNotification { destinataires } to SmsParticipant
+  EmailNotification { destinataires } to EmailParticipant
+  SmsNotification { paramValues } to TemplateParamValue
+  EmailNotification { paramValues } to TemplateParamValue
+}
+
+relationship OneToOne {
+	SmsNotification { emetteur } to MicroServiceParticipant
+    EmailNotification { emetteur } to MicroServiceParticipant
+    TemplateParamValue { param }   to TemplateParam
+}
+
+service Channel, SmsNotification, EmailNotification, SmsParticipant, EmailParticipant, MicroServiceParticipant with serviceImpl
+filter Channel, EmailNotification, EmailParticipant, SmsNotification, SmsParticipant, MicroServiceParticipant, TemplateParam
+dto Channel, EmailNotification, EmailParticipant, SmsNotification, SmsParticipant, MicroServiceParticipant, TemplateParam, TemplateParamValue with mapstruct
+paginate EmailNotification, EmailParticipant, SmsParticipant, SmsNotification, MicroServiceParticipant, TemplateParam, TemplateParamValue with pagination
+microservice EmailNotification, SmsNotification, Channel with corenotification

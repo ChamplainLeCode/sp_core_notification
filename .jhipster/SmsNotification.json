@@ -1,0 +1,43 @@
+{
+  "name": "SmsNotification",
+  "fields": [
+    {
+      "fieldName": "message",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "microServiceParticipant",
+      "otherEntityRelationshipName": "smsNotification",
+      "relationshipName": "emetteur",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "smsParticipant",
+      "otherEntityRelationshipName": "smsNotification",
+      "relationshipName": "destinataires"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "templateParamValue",
+      "otherEntityRelationshipName": "smsNotification",
+      "relationshipName": "paramValues"
+    }
+  ],
+  "changelogDate": "20210303154910",
+  "entityTableName": "sms_notification",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["corenotification"],
+  "microserviceName": "corenotification"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "EmailParticipant",
+  "fields": [
+    {
+      "fieldName": "mail",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "emailNotification",
+      "otherEntityRelationshipName": "destinataires",
+      "relationshipName": "emailNotification",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210303154610",
+  "entityTableName": "email_participant",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["corenotification"]
+}

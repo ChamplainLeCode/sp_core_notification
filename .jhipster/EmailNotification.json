@@ -1,0 +1,47 @@
+{
+  "name": "EmailNotification",
+  "fields": [
+    {
+      "fieldName": "message",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sujet",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "microServiceParticipant",
+      "otherEntityRelationshipName": "emailNotification",
+      "relationshipName": "emetteur",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "emailParticipant",
+      "otherEntityRelationshipName": "emailNotification",
+      "relationshipName": "destinataires"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "templateParamValue",
+      "otherEntityRelationshipName": "emailNotification",
+      "relationshipName": "paramValues"
+    }
+  ],
+  "changelogDate": "20210303155010",
+  "entityTableName": "email_notification",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["corenotification"],
+  "microserviceName": "corenotification"
+}

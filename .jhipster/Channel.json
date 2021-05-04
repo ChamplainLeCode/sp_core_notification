@@ -1,0 +1,36 @@
+{
+  "name": "Channel",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "ChannelType",
+      "fieldValues": "SMS,EMAIL",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "template",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "templateParam",
+      "otherEntityRelationshipName": "channel",
+      "relationshipName": "params"
+    }
+  ],
+  "changelogDate": "20210303154510",
+  "entityTableName": "channel",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["corenotification"],
+  "microserviceName": "corenotification"
+}

@@ -1,0 +1,50 @@
+{
+  "name": "TemplateParamValue",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "templateParam",
+      "otherEntityRelationshipName": "templateParamValue",
+      "relationshipName": "param",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "smsNotification",
+      "otherEntityRelationshipName": "paramValues",
+      "relationshipName": "smsNotification",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "emailNotification",
+      "otherEntityRelationshipName": "paramValues",
+      "relationshipName": "emailNotification",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210303154410",
+  "entityTableName": "template_param_value",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["corenotification"]
+}

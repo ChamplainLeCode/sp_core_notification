@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity SmsNotification.
+    -->
+    <changeSet id="20210303154910-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="emetteur_id"
+                                 baseTableName="sms_notification"
+                                 constraintName="fk_sms_notification_emetteur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="micro_service_participant"/>
+
+    </changeSet>
+</databaseChangeLog>
